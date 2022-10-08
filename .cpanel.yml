@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/mvdkeu1q/wijkbeweegkaart.fluxpuck.com/
+    - /bin/cp -a * $DEPLOYPATH
