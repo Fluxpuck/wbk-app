@@ -12,17 +12,21 @@
 <body>
 
     <main class="content">
-        <form action="/">
+        <form x-on:keydown.prevent.enter="">
+
             <!-- Information Tab -->
             <section id="info-tab" class="content-container-page">
-                <div class="content-container-left">
 
+                <label class="content-container-label">
+                    <h1>Informatie</h1>
+                </label>
+
+                <div class="content-container-left first-content">
                     <div class="survey-info">
                         <h1>Beweegonderzoek</h1>
-                        <p>Welkom bij het beweegonderzoek van InnoBeweegLab, in opdracht van de Gemeente Eindhoven.
-                            Middels dit onderzoek worden de sport en beweeg wensen en behoeften van de wijkbewoners
-                            Stratum achterhalen. De resultaten uit dit onderzoek zullen van invloed zijn op de
-                            herontwikkelingsplannen van de gemeente Eindhoven voor de wijk Stratum.</p>
+                        <p>Welkom bij het beweegonderzoek voor inwoners van Stratum. Het doel van dit onderzoek is de
+                            sport en beweeg wensen en behoeften te achterhalen. Deze informatie is van belang voor de
+                            herontwikkelingsplannen van de gemeente Eindhoven.</p>
                         <p>Dit onderzoek duurt ongeveer 2 minuten.</p>
                         <p>Meer informatie over het beweegonderzoek kunt u vinden op <a
                                 href="https://innobeweeglab.nl/beweegonderzoek/">InnoBeweegLab.nl</a>.</p>
@@ -36,30 +40,53 @@
                     </div>
 
                 </div>
-                <div class="content-container-right">
 
+                <div class="content-container-right">
                     <img id="beweegAfbeelding"
                         src="https://innobeweeglab.nl/wp-content/uploads/2022/06/DSC_0856v2-scaled.jpg" />
-
                 </div>
             </section>
-            <!-- Postcode -->
-            <section id="post-tab" class="content-container-page" style="display:none;">
+
+
+            <!-- Identity Tab -->
+            <section id="iden-tab" class="content-container-page" style="display:none;">
+                <label class="content-container-label">
+                    <h1>1. Deelnemer</h1>
+                </label>
                 <div class="content-container-left">
 
                     <article class="content-article">
+
                         <div>
-                            <h1>Postcode</h1>
+                            <h1>1.1 Wat is uw voornaam?</h1>
+                            <p>Om een beeld te krijgen bij de deelnemers van het beweegondoerzoek vragen wij om uw
+                                voornaam.</p>
+                            <input id="naam" class="input-fld" type="text" placeholder="voornaam"
+                                pattern="[A-Za-z]{1,32}" maxlength="16" required />
+                        </div>
+                        <div>
+                            <h1>1.2 Wat is uw leeftijd?</h1>
+                            <p>Graag krijgen wij een indicatie tot welke leefdtijdsgroep u behoord.</p>
+                            <select id="leeftijd" class="input-fld" placeholder="leeftijd" onclick="showCharacter()"
+                                required>
+                                <option value="5/11">5 - 11 jaar</option>
+                                <option value="12/17">12 - 17 jaar</option>
+                                <option value="18/34">18 - 34 jaar</option>
+                                <option value="35/64">35 - 64 jaar</option>
+                                <option value="65+">65+</option>
+                            </select>
+                        </div>
+                        <div>
+                            <h1>1.3 Wat is uw postcode?</h1>
                             <p>Dit onderzoek is gericht op wijkbewoners van Stratum te Eindhoven. Ter verificatie hebben
                                 we uw postcode nodig.</p>
-                            <p>Uw postcode zal niet opgeslagen, nog verwerkt worden.</p>
-                            <br>
                             <input id="postcode" class="input-fld" type="text" placeholder="postcode" pattern="[0-9]{4}"
                                 maxlength="4" required />
                         </div>
+
                     </article>
 
-                    <div>
+                    <div class="content-btns">
                         <input class="prev-btn btn" type="button" value="< previous" />
                         <input class="next-btn btn" type="button" value="next >" />
                     </div>
@@ -71,31 +98,128 @@
 
                 </div>
             </section>
+
+
+            <!-- NNGB Tab -->
+            <section id="nngb-tab" class="content-container-page" style="display:none;">
+                <label class="content-container-label">
+                    <h1>2. NNGB</h1>
+                </label>
+                <div class="content-container-left">
+
+                    <article class="content-article">
+
+                        <div>
+                            <h1>2.1 Heeft u een fysieke beperking?</h1>
+                            <p>Sporten en bewegen voor mensen met een fysieke beperking is niet vanzelfsprekend. Graag
+                                komen wij te weten of u een fysieke beperking heeft.</p>
+                            <br>
+                            <div>
+                                <input type="radio" name="beperking" id="beperking-yes" value="Ja">
+                                <label for="beperking">Ja</label><br>
+                                <input type="radio" name="beperking" id="beperking-no" value="Nee">
+                                <label for="beperking">Nee</label><br>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h1>2.2 Voldoet u aan de beweegrichtlijnen?</h1>
+                            <p>Bewegen en sporten is goed voor je. In het beweegonderzoek komen wij graag te weten of je
+                                aan de beweegrichtlijnen voor gezond bewegen voldoet.</p>
+                            <br>
+                            <div>
+                                <input type="radio" name="nngb" id="nngb-yes" value="Ja">
+                                <label for="nngb">Ja</label><br>
+                                <input type="radio" name="nngb" id="nngb-no" value="Nee">
+                                <label for="nngb">Nee</label><br>
+                            </div>
+                        </div>
+
+
+
+                    </article>
+
+                    <div class="content-btns">
+                        <input class="prev-btn btn" type="button" value="< previous" />
+                        <input class="next-btn btn" type="button" value="next >" />
+                    </div>
+
+                </div>
+                <div class="content-container-right">
+
+                    <div class="nngb-container-title">
+                        <h1>NNGB - Nationale Norm Gezond Bewegen</h1>
+                        <p>De beweegrichtlijnen, zoals opgesteld door het kenniscentrum Sport & Bewegen voor de
+                            Nationale
+                            Norm Gezond Bewegen.</p>
+                    </div>
+
+                    <div class="nngb-container" id="NNGB1" style="display: none;">
+                        <div class="nngb-container-item">
+                            <img src="./images/nngb/ropejump.png" alt="Rope jumping" />
+                            <div>
+                                <h2>1 uur per dag</h2>
+                                <p>Matig intensief bewegen (als je ademhaling sneller wordt).</p>
+                            </div>
+                        </div>
+                        <div class="nngb-container-item">
+                            <img src="./images/nngb/hanging.png" alt="Hanging" />
+                            <div>
+                                <h2>3x per week</h2>
+                                <p>Sport(ieve) activiteiten zoals fietsen, buitenspelen, fitness en andere sporten.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nngb-container" id="NNGB2" style="display: none;">
+                        <div class="nngb-container-item">
+                            <img src="./images/nngb/cycling.png" alt="Cycling">
+                            <div>
+                                <h2>2,5 uur per week</h2>
+                                <p>Matig intensief bewegen (als je ademhaling sneller wordt), verspreid over meerdere
+                                    dagen.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="nngb-container-item">
+                            <img src="./images/nngb/yoga.png" alt="Yoga">
+                            <div>
+                                <h2>2x per week</h2>
+                                <p>Sport(ieve) activiteiten zoals fietsen, buitenspelen, fitness en andere sporten (voor
+                                    ouderen in combinatie met balans oefeningen).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+
             <!-- Character Selection -->
             <section id="char-tab" class="content-container-page" style="display:none;">
                 <div class="content-container-left">
                     <article class="content-article">
-                        <div>
-                            <h1>Wie bent u?</h1>
-                            <p>Graag krijgen wij een indicatie tot welke doelgroep in de wijk u behoord. U kunt hiervoor
-                                uw
-                                leeftijd invoeren en een character selecteren. </p>
-                            <p>Uw leeftijd zal niet opgeslagen, nog verwerkt worden.</p>
-                            <br>
-                            <select id="leeftijd" class="input-fld" placeholder="leeftijd" onclick="showCharacter()"
-                                required>
-                                <option value="0/2">0 tot 2</option>
-                                <option value="2/5">2 tot 5</option>
-                                <option value="5/12">5 tot 12</option>
-                                <option value="12/18">12 tot 18</option>
-                                <option value="18/35">18 tot 35</option>
-                                <option value="35/65">35 tot 65</option>
-                                <option value="65+">65+</option>
-                            </select>
+
+                        <div id="avatars-5/11">
+                            <img src="./images/avatars/Asset 1@4x.png">
+                            <img src="./images/avatars/Asset 1@4x.png">
                         </div>
+                        <div id="avatars-12/17">
+
+                        </div>
+                        <div id="avatars-18/34">
+
+                        </div>
+                        <div id="avatars-35/64">
+
+                        </div>
+                        <div id="avatars-65+">
+
+                        </div>
+
                     </article>
 
-                    <div>
+                    <div class="content-btns">
                         <input class="prev-btn btn" type="button" value="< previous" />
                         <input class="next-btn btn" type="button" value="next >" />
                     </div>
@@ -103,32 +227,22 @@
                 </div>
                 <div class="content-container-right">
 
-                    <div class="avatar-container">
-                        <section class="avatar-container-left" id="avatar-children" onclick="selectCharacter(this)"
-                            required>
-                            <option value="0/2" class="avatar-tile" id="avatar-10" style="display:none;"></option>
-                            <option value="2/5" class="avatar-tile" id="avatar-11" style="display:none;"></option>
-                            <option value="2/5" class="avatar-tile" id="avatar-5" style="display:none;"></option>
-                            <option value="5/12" class="avatar-tile" id="avatar-3" style="display:none;"></option>
-                            <option value="5/12" class="avatar-tile" id="avatar-14" style="display:none;"></option>
-                            <option value="5/12" class="avatar-tile" id="avatar-9" style="display:none;"></option>
-                            <option value="12/18" class="avatar-tile" id="avatar-13" style="display:none;"></option>
-                            <option value="12/18" class="avatar-tile" id="avatar-9" style="display:none;"></option>
-                            <option value="18/35" class="avatar-tile" id="avatar-2" style="display:none;"></option>
-                            <option value="18/35" class="avatar-tile" id="avatar-6" style="display:none;"></option>
-                            <option value="35/65" class="avatar-tile" id="avatar-2" style="display:none;"></option>
-                            <option value="35/65" class="avatar-tile" id="avatar-4" style="display:none;"></option>
-                            <option value="65+" class="avatar-tile" id="avatar-7" style="display:none;"></option>
-                        </section>
-                        <!-- <section class="avatar-container-right">
-                        </section> -->
-                    </div>
+
+
 
 
                     <input type="number" style="display: none;" />
 
                 </div>
             </section>
+
+
+
+
+
+
+
+
             <!-- WijkBeweegKaart -->
             <section id="wbk-tab" class="content-container-page" style="display:none;">
                 <div class="content-container-left">
@@ -149,7 +263,7 @@
                             </nav>
                         </div>
                     </article>
-                    <div>
+                    <div class="content-btns">
                         <input class="prev-btn btn" type="button" value="< previous" />
                         <input class="next-btn btn" type="button" value="next >" />
                     </div>
@@ -161,6 +275,8 @@
                     </div>
                 </div>
             </section>
+
+
             <!-- Thanks Screen -->
             <section id="thnx-tab" class="content-container-page" style="display:none;">
                 <div class="content-container-left">
@@ -171,7 +287,7 @@
                         <p>U kunt verder helpen door dit onderzoek te delen met uw naaste familie en andere
                             wijkbewoners!</p>
                     </div>
-                    <div>
+                    <div class="content-btns">
                         <input class="prev-btn btn" type="button" value="< previous" />
                         <input class="subm-btn btn" type="submit" />
                     </div>
@@ -179,11 +295,13 @@
                 </div>
                 <div class="content-container-right">
 
-                    <img id="beweegAfbeelding"
+                    <img id="beweegAfbeelding" alt="InnoBeweegLab"
                         src="https://innobeweeglab.nl/wp-content/uploads/2022/07/IMG_5414-1-scaled-e1658235684100.jpg" />
 
                 </div>
             </section>
+
+
         </form>
     </main>
 
@@ -202,9 +320,18 @@
                 //go to next page
                 if (btn.classList.contains('next-btn')) {
                     if (currentPage < formPages.length) {
-                        //if post tab, check postcode
-                        if (formPages[currentPage].id == "post-tab") {
-                            //check if postcode is valid in Stratum
+
+                        //check if name, age and postcode is filled
+                        if (formPages[currentPage].id == "iden-tab") {
+                            // --> check if name is given
+                            const nameInput = document.getElementById('naam').value
+                            if (!nameInput) return alert('U heeft uw naam nog niet opgegeven.')
+
+                            // --> check if age is selected
+                            const ageInput = document.getElementById('leeftijd').value
+                            if (!ageInput) return alert('Selecteer een leeftijdscategorie.')
+
+                            // --> check if postcode is valid in Stratum
                             const response = await fetch('https://data.eindhoven.nl/api/records/1.0/search/?dataset=postcode-buurt-wijk&q=&rows=50&facet=postcode4')
                             const result = response ? await response.json() : null
                             if (response == null) return alert('Oops... er is iets mis gegaan!')
@@ -217,7 +344,35 @@
                             } else {
                                 return alert("U heeft nog geen postcode ingevoerd.");
                             }
+
+                            // ->> set NNGB image, based on age
+                            const nngb1 = document.getElementById('NNGB1');
+                            const nngb2 = document.getElementById('NNGB2');
+                            if (ageInput == '5/11' || ageInput == '12/17') {
+                                nngb1.style.display = 'grid';
+                                nngb2.style.display = 'none';
+                            } else {
+                                nngb1.style.display = 'none';
+                                nngb2.style.display = 'grid';
+                            }
                         }
+
+                        //check if Beperking & NNGB has been checked
+                        if (formPages[currentPage].id == "nngb-tab") {
+                            const beperking1 = document.getElementById('beperking-yes');
+                            const beperking2 = document.getElementById('beperking-no');
+                            if (beperking1.checked == false && beperking2.check == false) return alert("Beantwoord vraag 2.1 door 'Ja' of 'Nee' te selecteren.")
+                            if (beperking1.checked == true && beperking2.check == true) return alert("Het is de bedoeling om maar één antwoord te selecteren, 'Ja' of 'Nee'.")
+
+                            const nngb1 = document.getElementById('nngb-yes');
+                            const nngb2 = document.getElementById('nngb-no');
+                            if (nngb1.checked == false && nngb2.checked == false) return alert("Beantwoord vraag 2.2 door 'Ja' of 'Nee' te selecteren.")
+                            if (nngb1.checked == true && nngb2.checked == true) return alert("Het is de bedoeling om maar één antwoord te selecteren, 'Ja' of 'Nee'.")
+                        }
+
+
+
+
                         //if character tab, check if a character is selected
                         if (formPages[currentPage].id == "char-tab") {
                             //get all avatar items
@@ -228,10 +383,16 @@
                             }
                             if (isAvatarSelecter == false) return alert("U heeft nog geen character geselecteerd.")
                         }
+
+
+
                         //if wijkbeweegkaart tab, kijk of de kaart is gevuld en bewaar de 
                         if (formPages[currentPage].id == "wbk-tab") {
                             if (dropItemLocations.size < 2) return alert("U heeft nog geen sport- en beweegbehoeften aangegeven!")
                         }
+
+
+
                         //disable current page
                         formPages[currentPage].style.display = "none";
                         //move up page
@@ -257,56 +418,46 @@
     </script>
 
     <script>
-        function showCharacter() {
-            //get selected value
-            const ageSelection = document.getElementById('leeftijd').value
-            const avatarArray = document.getElementById('avatar-children');
-            //disable all children
-            for (const child of avatarArray.children) {
-                child.style.display = "none";
-            }
-            //show characters, based on selection
-            switch (ageSelection) {
-                case "0/2":
-                    for (const child of avatarArray.children) {
-                        if (child.value == "0/2") child.style.display = "block";
-                    }
-                    break;
-                case "2/5":
-                    for (const child of avatarArray.children) {
-                        if (child.value == "2/5") child.style.display = "block";
-                    }
-                    break;
-                case "5/12":
-                    for (const child of avatarArray.children) {
-                        if (child.value == "5/12") child.style.display = "block";
-                    }
-                    break;
-                case "12/18":
-                    for (const child of avatarArray.children) {
-                        if (child.value == "12/18") child.style.display = "block";
-                    }
-                    break;
-                case "18/35":
-                    for (const child of avatarArray.children) {
-                        if (child.value == "18/35") child.style.display = "block";
-                    }
-                    break;
-                case "35/65":
-                    for (const child of avatarArray.children) {
-                        if (child.value == "35/65") child.style.display = "block";
-                    }
-                    break;
-                case "65+":
-                    for (const child of avatarArray.children) {
-                        if (child.value == "65+") child.style.display = "block";
-                    }
-                    break;
-                default:
-                    return alert('Oops. Je moet een leeftijd selecteren, voordat je een karakter kan selecteren.')
-                    break;
-            }
-        }
+        // function showCharacter() {
+        //     //get selected value
+        //     const ageSelection = document.getElementById('leeftijd').value
+        //     const avatarArray = document.getElementById('avatar-children');
+        //     //disable all children
+        //     for (const child of avatarArray.children) {
+        //         child.style.display = "none";
+        //     }
+        //     //show characters, based on selection
+        //     switch (ageSelection) {
+        //         case "5/11":
+        //             for (const child of avatarArray.children) {
+        //                 if (child.value == "5/11") child.style.display = "block";
+        //             }
+        //             break;
+        //         case "12/17":
+        //             for (const child of avatarArray.children) {
+        //                 if (child.value == "12/17") child.style.display = "block";
+        //             }
+        //             break;
+        //         case "18/34":
+        //             for (const child of avatarArray.children) {
+        //                 if (child.value == "18/34") child.style.display = "block";
+        //             }
+        //             break;
+        //         case "35/64":
+        //             for (const child of avatarArray.children) {
+        //                 if (child.value == "35/64") child.style.display = "block";
+        //             }
+        //             break;
+        //         case "65+":
+        //             for (const child of avatarArray.children) {
+        //                 if (child.value == "65+") child.style.display = "block";
+        //             }
+        //             break;
+        //         default:
+        //             // return alert('Oops. Je moet een leeftijd selecteren, voordat je een karakter kan selecteren.')
+        //             break;
+        //     }
+        // }
 
         function selectCharacter(avatars) {
             for (const child of avatars.children) {
@@ -365,7 +516,7 @@
 
     <footer class="footer-content">
         <section class="footer-section-logo">
-            <img src="./images/Logo-Zwart-Oranje-1-1024x453-1.png" />
+            <img src="./images/Logo-Zwart-Oranje-1-1024x453-1.png" alt="InnoBeweegLab Logo Zwart" />
             <span id="copyright">Built with ❤ by InnoBeweegLab © 2022 </span>
             <span id="illustrations">Illustration by <a
                     href="https://icons8.com/illustrations/author/u7l2K4BCiAa9">Natasha Remarchuk</a>

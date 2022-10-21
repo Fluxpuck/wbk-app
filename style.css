@@ -11,10 +11,12 @@ p,
 a,
 span,
 input,
+label,
 h1,
 h2,
 h3 {
     font-family: 'Roboto', sans-serif;
+    color: #111111;
 }
 
 input {
@@ -36,21 +38,59 @@ main {
     width: 70vw;
 }
 
+.content-container-label {
+    font-size: 12px;
+    position: absolute;
+    min-width: 100px;
+    padding: 10px;
+    background-color: #ea5d19;
+    margin-top: 40px;
+    text-align: right;
+    margin-left: -3px;
+    border-left: solid 3px orange;
+    border-radius: 2px 6px 6px 2px;
+}
+
+.content-container-label h1 {
+    white-space: nowrap;
+    color: whitesmoke;
+    margin: 0;
+}
+
+.first-content {
+    justify-content: center !important;
+}
+
 .content-container-left {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 50px;
+    justify-content: flex-start;
+    gap: 30px;
     border-radius: 10px 0 0 10px;
 
-    background-image: url(https://innobeweeglab.nl/wp-content/uploads/2022/06/Logo-Zwart-Oranje-1-1024x453-1.png);
+    /* background-image: url(https://innobeweeglab.nl/wp-content/uploads/2022/06/Logo-Zwart-Oranje-1-1024x453-1.png); */
     background-size: 200px;
     background-repeat: no-repeat;
     background-position-x: 5%;
     background-position-y: 97%;
 
     background-color: whitesmoke;
+}
+
+.content-container-left h1 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.content-container-left span {
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+.content-container-left a {
+    text-decoration: none;
+    color: #ea611e;
 }
 
 .content-container-right {
@@ -65,11 +105,23 @@ main {
 
 .content-article {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    height: 30vh;
+    gap: 10px;
     width: 60%;
+    margin-top: 100px;
+}
+
+.content-article p {
+    margin: 0;
+}
+
+.content-btns {
+    position: absolute;
+    bottom: 18vh;
+    width: 35vw;
+    text-align: center;
 }
 
 .ibl_logo {
@@ -117,20 +169,74 @@ main {
 }
 
 .input-fld {
+    background: unset;
+    border: unset;
+    border-bottom: 1px solid #222;
     font-size: 16px;
     height: 30px;
-    width: 180px;
+    width: 150px;
     text-align: center;
-    border-radius: 4px;
-    border: solid 1px #999999;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
+.input-fld::after {
+    background-color: blue;
+}
 
+#postcode {
+    width: 140px;
+}
 
 #beweegAfbeelding {
     max-width: 80%;
     max-height: 80%;
 }
+
+.nngb-container-title {
+    text-align: center;
+    max-width: 80%;
+}
+
+.nngb-container {
+    grid-template-columns: 50% 50%;
+}
+
+.nngb-container img {
+    max-width: 80%;
+    max-height: 200px;
+}
+
+.nngb-container-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+
+    background-color: whitesmoke;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.nngb-container-item h2 {
+    margin-bottom: 0;
+}
+
+.nngb-container-item p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+
+
+
+
+
+
+
 
 
 .avatar-container {
