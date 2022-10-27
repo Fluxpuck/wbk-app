@@ -12,7 +12,7 @@
 <body>
 
     <main class="content">
-        <form x-on:keydown.prevent.enter="">
+        <form x-on:keydown.prevent.enter="" id="BeweegOnderzoek">
 
             <!-- Information Tab -->
             <section id="info-tab" class="content-container-page">
@@ -31,8 +31,8 @@
                         <p>Meer informatie over het beweegonderzoek kunt u vinden op <a
                                 href="https://innobeweeglab.nl/beweegonderzoek/">InnoBeweegLab.nl</a>.</p>
                         <br>
-                        <input id="check" type="checkbox" required><span>ik ga akkoord met de <a href="">algemene
-                                voorwaarden</a></span></input>
+                        <input name="voorwaarden" id="check" type="checkbox" required><span>ik ga akkoord met de <a
+                                href="">algemene voorwaarden</a></span></input>
                     </div>
 
                     <div class="button-box check">
@@ -47,7 +47,6 @@
                 </div>
             </section>
 
-
             <!-- Identity Tab -->
             <section id="iden-tab" class="content-container-page" style="display:none;">
                 <label class="content-container-label">
@@ -61,14 +60,13 @@
                             <h1>1.1 Wat is uw voornaam?</h1>
                             <p>Om een beeld te krijgen bij de deelnemers van het beweegondoerzoek vragen wij om uw
                                 voornaam.</p>
-                            <input id="naam" class="input-fld" type="text" placeholder="voornaam"
+                            <input name="naam" id="naam" class="input-fld" type="text" placeholder="voornaam"
                                 pattern="[A-Za-z]{1,32}" maxlength="16" required />
                         </div>
                         <div>
                             <h1>1.2 Wat is uw leeftijd?</h1>
                             <p>Graag krijgen wij een indicatie tot welke leefdtijdsgroep u behoord.</p>
-                            <select id="leeftijd" class="input-fld" placeholder="leeftijd" onclick="showCharacter()"
-                                required>
+                            <select name="leeftijd" id="leeftijd" class="input-fld" placeholder="leeftijd" required>
                                 <option value="5/11">5 - 11 jaar</option>
                                 <option value="12/17">12 - 17 jaar</option>
                                 <option value="18/34">18 - 34 jaar</option>
@@ -80,8 +78,8 @@
                             <h1>1.3 Wat is uw postcode?</h1>
                             <p>Dit onderzoek is gericht op wijkbewoners van Stratum te Eindhoven. Ter verificatie hebben
                                 we uw postcode nodig.</p>
-                            <input id="postcode" class="input-fld" type="text" placeholder="postcode" pattern="[0-9]{4}"
-                                maxlength="4" required />
+                            <input name="postcode" id="postcode" class="input-fld" type="text" placeholder="postcode"
+                                pattern="[0-9]{4}" maxlength="4" required />
                         </div>
 
                     </article>
@@ -99,7 +97,6 @@
                 </div>
             </section>
 
-
             <!-- NNGB Tab -->
             <section id="nngb-tab" class="content-container-page" style="display:none;">
                 <label class="content-container-label">
@@ -115,7 +112,7 @@
                                 komen wij te weten of u een fysieke beperking heeft.</p>
                             <br>
                             <div>
-                                <input type="radio" name="beperking" id="beperking-yes" value="Ja">
+                                <input type="radio" name="beperking" id="beperking-yes" value="Ja" required>
                                 <label for="beperking">Ja</label><br>
                                 <input type="radio" name="beperking" id="beperking-no" value="Nee">
                                 <label for="beperking">Nee</label><br>
@@ -124,11 +121,11 @@
 
                         <div>
                             <h1>2.2 Voldoet u aan de beweegrichtlijnen?</h1>
-                            <p>Bewegen en sporten is goed voor je. In het beweegonderzoek komen wij graag te weten of je
-                                aan de beweegrichtlijnen voor gezond bewegen voldoet.</p>
+                            <p>Bewegen en sporten is goed voor je. Rechts staan de beweegrichtlijnen voor gezond
+                                bewegen. Wij komen graag te weten of u voldoet aan deze richtlijnen. </p>
                             <br>
                             <div>
-                                <input type="radio" name="nngb" id="nngb-yes" value="Ja">
+                                <input type="radio" name="nngb" id="nngb-yes" value="Ja" required>
                                 <label for="nngb">Ja</label><br>
                                 <input type="radio" name="nngb" id="nngb-no" value="Nee">
                                 <label for="nngb">Nee</label><br>
@@ -194,27 +191,58 @@
                 </div>
             </section>
 
-
-            <!-- Character Selection -->
-            <section id="char-tab" class="content-container-page" style="display:none;">
+            <!-- Reasoning Tab -->
+            <section id="bwrd-tab" class="content-container-page" style="display:none;">
+                <label class="content-container-label">
+                    <h1>3. Beweegredenen</h1>
+                </label>
                 <div class="content-container-left">
+
                     <article class="content-article">
 
-                        <div id="avatars-5/11">
-                            <img src="./images/avatars/Asset 1@4x.png">
-                            <img src="./images/avatars/Asset 1@4x.png">
+                        <div>
+                            <h1>3.1 Wat zijn uw beweegredenen?</h1>
+                            <p>Graag komen we te weten waarom je aan beweging/sporten doet. Kies de reden die het meest
+                                van toepassing is.</p>
+                            <br>
+                            <select name="beweegreden" id="beweegreden" class="input-fld" placeholder="beweegreden"
+                                required>
+                                <option value="Gezondheid">Gezondheid</option>
+                                <option value="Opbouw conditie, kracht en/of lenigheid">Opbouw conditie, kracht en/of
+                                    lenigheid</option>
+                                <option value="Lekker buiten zijn">Lekker buiten zijn</option>
+                                <option value="Leuke activiteit en plezier">Leuke activiteit en plezier</option>
+                                <option value="Gezelligheid en sociale contacten">Gezelligheid en sociale contacten
+                                </option>
+                                <option value="Onspanning, als uitlaatklep">Onspanning, als uitlaatklep</option>
+                                <option value="Prestatie, jezelf verbeteren">Prestatie, jezelf verbeteren</option>
+                                <option value="Competitie, meten met anderen">Competitie, meten met anderen</option>
+                                <option value="Nieuwe vaardigheden leren">Nieuwe vaardigheden leren</option>
+                                <option value="Geen van deze redenen">Geen van deze redenen</option>
+                                <option value="Ik sport of beweeg niet">Ik sport of beweeg niet</option>
+                            </select>
                         </div>
-                        <div id="avatars-12/17">
 
-                        </div>
-                        <div id="avatars-18/34">
-
-                        </div>
-                        <div id="avatars-35/64">
-
-                        </div>
-                        <div id="avatars-65+">
-
+                        <div>
+                            <h1>3.2 Wat zijn belemmeringen om te bewegen?</h1>
+                            <p>Ook komen we graag te weten wat je belemmerd om te bewegen/sporten. Kies de reden die het
+                                meest van toepassing is.</p>
+                            <br>
+                            <select name="beweegbelemmering" id="beweegbelemmering" class="input-fld"
+                                placeholder="beweegbelemmering" required>
+                                <option value="Tijdsgebrek">Tijdsgebrek</option>
+                                <option value="Lichaamelijke belemmering">Lichaamelijke belemmering</option>
+                                <option value="Beperkte motivatie">Beperkte motivatie</option>
+                                <option value="Geen sportmaatje">Geen sportmaatje</option>
+                                <option value="Te duur">Te duur</option>
+                                <option value="Onspanning, als uitlaatklep">Onspanning, als uitlaatklep</option>
+                                <option value="Prestatie, jezelf verbeteren">Prestatie, jezelf verbeteren</option>
+                                <option value="Competitie, meten met anderen">Competitie, meten met anderen</option>
+                                <option value="Nieuwe vaardigheden leren">Nieuwe vaardigheden leren</option>
+                                <option value="Geen van deze redenen">Geen van deze redenen</option>
+                                <option value="Ik ervaar geen belemmering in sporten">Ik ervaar geen belemmering in
+                                    sporten</option>
+                            </select>
                         </div>
 
                     </article>
@@ -228,10 +256,99 @@
                 <div class="content-container-right">
 
 
+                </div>
+            </section>
 
+            <!-- Character Selection -->
+            <section id="char-tab" class="content-container-page" style="display:none;">
+                <label class="content-container-label">
+                    <h1>4. Doelgroep</h1>
+                </label>
+                <div class="content-container-left">
+                    <article class="content-article">
 
+                        <div>
+                            <h1>4.1 Wat is uw geslacht?</h1>
+                            <div>
+                                <input type="radio" name="geslacht" id="male" value="Man" required autofocus>
+                                <label for="geslacht">Man</label><br>
+                                <input type="radio" name="geslacht" id="female" value="Vrouw">
+                                <label for="geslacht">Vrouw</label><br>
+                                <input type="radio" name="geslacht" id="different" value="Anders">
+                                <label for="geslacht">Anders</label><br>
+                            </div>
+                        </div>
 
-                    <input type="number" style="display: none;" />
+                        <div>
+                            <h1>4.2 Welke persona spreekt het meest tot jouw?</h1>
+                            <p>Het onderzoek richt zich op verschillende doelgroepen in de wijk Stratum. Graag komen we
+                                erachter welke doelgroep het meest tot jou aanspreekt. Kies een persona door rechts op
+                                de karaters te klikken en de tekst in de identiteitskaart te lezen.</p> <br>
+                            <h1>→</h1>
+                        </div>
+
+                    </article>
+
+                    <div class="content-btns">
+                        <input class="prev-btn btn" type="button" value="< previous" />
+                        <input class="next-btn btn" type="button" value="next >" />
+                    </div>
+
+                </div>
+                <div class="content-container-right space">
+
+                    <section class="id-card" id="id-card">
+                        <div class="id-card-title">
+                            <h1>Identiteitskaart</h1>
+                        </div>
+                        <div class="id-photo">
+
+                        </div>
+                        <div class="id-info">
+                            <h1 id="id-info-name"></h1>
+                            <p id="id-info-persona"></p>
+                            <p id="id-info-reden"></p>
+                            <p id="id-info-belemmering"></p>
+                        </div>
+                    </section>
+
+                    <div class="avatar-selection">
+                        <section class="avatar-list" name="avatar" required>
+                            <!-- Male Avatars -->
+                            <option class="avatar male Bs" id="Bs-male" value="Basisscholier"
+                                onclick="selectCharacter(this)"></option>
+                            <option class="avatar male Ms" id="Ms-male" value="Middelbare scholier"
+                                onclick="selectCharacter(this)"> </option>
+                            <option class="avatar male St" id="St-male" value="Student" onclick="selectCharacter(this)">
+                            </option>
+                            <option class="avatar male Ft" id="Ft-male" value="Fulltimer"
+                                onclick="selectCharacter(this)">
+                            </option>
+                            <option class="avatar male Pt" id="Pt-male" value="Parttimer"
+                                onclick="selectCharacter(this)">
+                            </option>
+                            <option class="avatar male Ps" id="Ps-male" value="Gepensioneerde"
+                                onclick="selectCharacter(this)"> </option>
+                            <!-- Female Avatars -->
+                            <option class="avatar female Bs" id="Bs-female" value="Basisscholier"
+                                onclick="selectCharacter(this)"> </option>
+                            <option class="avatar female Ms" id="Ms-female" value="Middelbare scholier"
+                                onclick="selectCharacter(this)"> </option>
+                            <option class="avatar female St" id="St-female" value="Student"
+                                onclick="selectCharacter(this)">
+                            </option>
+                            <option class="avatar female Ft" id="Ft-female" value="Fulltimer"
+                                onclick="selectCharacter(this)">
+                            </option>
+                            <option class="avatar female Pt" id="Pt-female" value="Parttimer"
+                                onclick="selectCharacter(this)">
+                            </option>
+                            <option class="avatar female Zv" id="Zv-female" value="Zwangere vrouw"
+                                onclick="selectCharacter(this)"> </option>
+                            <option class="avatar female Ps" id="Ps-female" value="Gepensioneerde"
+                                onclick="selectCharacter(this)"></option>
+                        </section>
+                    </div>
 
                 </div>
             </section>
@@ -355,36 +472,144 @@
                                 nngb1.style.display = 'none';
                                 nngb2.style.display = 'grid';
                             }
+
+                            // ---> show avatars based on age selection
+                            const avatarArray = document.getElementsByClassName('avatar');
+                            switch (ageInput) {
+                                case '5/11':
+                                    for (let avatar of avatarArray) {
+                                        if (avatar.classList.contains('Bs') ||
+                                            avatar.classList.contains('Us')) {
+                                            avatar.style.display = 'block';
+                                            avatar.classList.add('active-avatar')
+                                        }
+                                        else {
+                                            avatar.style.display = 'none';
+                                            avatar.classList.remove('active-avatar')
+                                        }
+                                    }
+                                    break;
+                                case '12/17':
+                                    for (let avatar of avatarArray) {
+                                        if (avatar.classList.contains('Ms') ||
+                                            avatar.classList.contains('Us')) {
+                                            avatar.style.display = 'block';
+                                            avatar.classList.add('active-avatar')
+                                        }
+                                        else {
+                                            avatar.style.display = 'none';
+                                            avatar.classList.remove('active-avatar')
+                                        }
+                                    }
+                                    break;
+                                case '18/34':
+                                    for (let avatar of avatarArray) {
+                                        if (avatar.classList.contains('St') ||
+                                            avatar.classList.contains('Ft') ||
+                                            avatar.classList.contains('Pt') ||
+                                            avatar.classList.contains('Zv') ||
+                                            avatar.classList.contains('Mn') ||
+                                            avatar.classList.contains('Us')) {
+                                            avatar.style.display = 'block';
+                                            avatar.classList.add('active-avatar')
+                                        }
+                                        else {
+                                            avatar.style.display = 'none';
+                                            avatar.classList.remove('active-avatar')
+                                        }
+                                    }
+                                    break;
+                                case '35/64':
+                                    for (let avatar of avatarArray) {
+                                        if (avatar.classList.contains('Ft') ||
+                                            avatar.classList.contains('Pt') ||
+                                            avatar.classList.contains('Mn') ||
+                                            avatar.classList.contains('Us')) {
+                                            avatar.style.display = 'block';
+                                            avatar.classList.add('active-avatar')
+                                        }
+                                        else {
+                                            avatar.style.display = 'none';
+                                            avatar.classList.remove('active-avatar')
+                                        }
+                                    }
+                                    break;
+                                case '65+':
+                                    for (let avatar of avatarArray) {
+                                        if (avatar.classList.contains('Ps') ||
+                                            avatar.classList.contains('Us')) {
+                                            avatar.style.display = 'block';
+                                            avatar.classList.add('active-avatar')
+                                        }
+                                        else {
+                                            avatar.style.display = 'none';
+                                            avatar.classList.remove('active-avatar')
+                                        }
+                                    }
+                                    break;
+                                default:
+                                    break;
+                            }
                         }
 
                         //check if Beperking & NNGB has been checked
                         if (formPages[currentPage].id == "nngb-tab") {
-                            const beperking1 = document.getElementById('beperking-yes');
-                            const beperking2 = document.getElementById('beperking-no');
-                            if (beperking1.checked == false && beperking2.check == false) return alert("Beantwoord vraag 2.1 door 'Ja' of 'Nee' te selecteren.")
-                            if (beperking1.checked == true && beperking2.check == true) return alert("Het is de bedoeling om maar één antwoord te selecteren, 'Ja' of 'Nee'.")
-
-                            const nngb1 = document.getElementById('nngb-yes');
-                            const nngb2 = document.getElementById('nngb-no');
-                            if (nngb1.checked == false && nngb2.checked == false) return alert("Beantwoord vraag 2.2 door 'Ja' of 'Nee' te selecteren.")
-                            if (nngb1.checked == true && nngb2.checked == true) return alert("Het is de bedoeling om maar één antwoord te selecteren, 'Ja' of 'Nee'.")
+                            //check if a value is selected for beperking
+                            const bpkRadioButtons = document.getElementsByName('beperking')
+                            if (Array.from(bpkRadioButtons).some(radio => radio.checked == true) == false) return alert("Beantwoord vraag 2.1 door 'Ja' of 'Nee' te selecteren.")
+                            //check if a value is slected for nngb
+                            const nngbRadioButtons = document.getElementsByName('nngb')
+                            if (Array.from(nngbRadioButtons).some(radio => radio.checked == true) == false) return alert("Beantwoord vraag 2.2 door 'Ja' of 'Nee' te selecteren.")
                         }
 
+                        //check if beweegreden en belemmering has been chosen
+                        if (formPages[currentPage].id == "bwrd-tab") {
+                            // --> check if beweegreden is selected
+                            const redenInput = document.getElementById('beweegreden').value
+                            if (!redenInput) return alert('Selecteer een beweegreden.')
 
+                            // --> check if beweegbelemmering is selected
+                            const belemmeringInput = document.getElementById('beweegbelemmering').value
+                            if (!belemmeringInput) return alert('Selecteer een beweegbelemmering.')
 
+                            // ->> set ID-card name (once)
+                            if (!document.getElementById('id-info-name').innerHTML) {
+                                //set Name for ID-card
+                                const h1 = document.getElementById('id-info-name');
+                                const nameValue = document.createTextNode(`¹   ${document.getElementById('naam').value}`)
+                                h1.appendChild(nameValue);
+                            }
+
+                            // ->> set ID-card values
+                            const p1 = document.getElementById('id-info-reden');
+                            const p2 = document.getElementById('id-info-belemmering');
+                            //clean innerHTML
+                            p1.innerHTML = "", p2.innerHTML = "";
+                            //write innerHTML
+                            const textValue1 = document.createTextNode(`³   ${redenInput}`)
+                            const textValue2 = document.createTextNode(`⁴   ${belemmeringInput}`)
+                            p1.appendChild(textValue1);
+                            p2.appendChild(textValue2);
+
+                        }
 
                         //if character tab, check if a character is selected
                         if (formPages[currentPage].id == "char-tab") {
-                            //get all avatar items
-                            const avatarArray = document.getElementById('avatar-children');
+                            //check if a value is selected for beperking
+                            const doelgroepButtons = document.getElementsByName('geslacht')
+                            if (Array.from(doelgroepButtons).some(radio => radio.checked == true) == false) return alert("Kies een geslacht, alvorens u verder gaat")
+
+                            //check if a character is selecter
+                            const avatarArray = document.getElementsByClassName('avatar')
                             let isAvatarSelecter = false
-                            for (let child of avatarArray.children) {
+                            for (let child of Array.from(avatarArray)) {
                                 if (child.selected == true) isAvatarSelecter = true;
                             }
                             if (isAvatarSelecter == false) return alert("U heeft nog geen character geselecteerd.")
+
+
+
                         }
-
-
 
                         //if wijkbeweegkaart tab, kijk of de kaart is gevuld en bewaar de 
                         if (formPages[currentPage].id == "wbk-tab") {
@@ -418,60 +643,59 @@
     </script>
 
     <script>
-        // function showCharacter() {
-        //     //get selected value
-        //     const ageSelection = document.getElementById('leeftijd').value
-        //     const avatarArray = document.getElementById('avatar-children');
-        //     //disable all children
-        //     for (const child of avatarArray.children) {
-        //         child.style.display = "none";
-        //     }
-        //     //show characters, based on selection
-        //     switch (ageSelection) {
-        //         case "5/11":
-        //             for (const child of avatarArray.children) {
-        //                 if (child.value == "5/11") child.style.display = "block";
-        //             }
-        //             break;
-        //         case "12/17":
-        //             for (const child of avatarArray.children) {
-        //                 if (child.value == "12/17") child.style.display = "block";
-        //             }
-        //             break;
-        //         case "18/34":
-        //             for (const child of avatarArray.children) {
-        //                 if (child.value == "18/34") child.style.display = "block";
-        //             }
-        //             break;
-        //         case "35/64":
-        //             for (const child of avatarArray.children) {
-        //                 if (child.value == "35/64") child.style.display = "block";
-        //             }
-        //             break;
-        //         case "65+":
-        //             for (const child of avatarArray.children) {
-        //                 if (child.value == "65+") child.style.display = "block";
-        //             }
-        //             break;
-        //         default:
-        //             // return alert('Oops. Je moet een leeftijd selecteren, voordat je een karakter kan selecteren.')
-        //             break;
-        //     }
-        // }
-
-        function selectCharacter(avatars) {
-            for (const child of avatars.children) {
-                child.addEventListener('click', async event => {
-                    //disable all children
-                    for (const item of avatars.children) {
-                        item.selected = null
-                    }
-                    //give item selected value
-                    event.srcElement.selected = 'selected'
-                })
-            }
+        //show characters based on sex selection
+        const sexButtons = document.getElementsByName('geslacht');
+        const MaleAvatars = document.getElementsByClassName('male active-avatar');
+        const FemaleAvatars = document.getElementsByClassName('female active-avatar');
+        for (let btn of sexButtons) {
+            btn.addEventListener('click', async event => {
+                switch (btn.value) {
+                    case "Man":
+                        for (let male of MaleAvatars) male.style.display = 'unset';
+                        for (let female of FemaleAvatars) female.style.display = 'none';
+                        break;
+                    case "Vrouw":
+                        for (let male of MaleAvatars) male.style.display = 'none';
+                        for (let female of FemaleAvatars) female.style.display = 'unset';
+                        break;
+                    case "Anders":
+                        for (let male of MaleAvatars) male.style.display = 'unset';
+                        for (let female of FemaleAvatars) female.style.display = 'unset';
+                        break;
+                    default:
+                        break;
+                }
+            })
         }
+
+        //select the avatars && show ID card
+        function selectCharacter(avatar) {
+
+            //set name value
+            const nameInput = document.getElementById('naam').value
+            //unselect the avatar
+            const avatarArray = document.getElementsByClassName('avatar');
+            for (let item of avatarArray) item.selected = null;
+            if (avatar.selected) avatar.selected = null;
+            else avatar.selected = true;
+
+            //change profile picture on ID card
+            const avatarImage = document.getElementsByClassName('id-photo')[0]
+            avatarImage.id = avatar.id
+
+            //change profile persona title on ID card
+            const persona = document.getElementById('id-info-persona');
+            persona.innerHTML = "";
+            //write innerHTML
+            const textValue = document.createTextNode(`²   ${avatar.value}`)
+            persona.appendChild(textValue);
+        }
+
     </script>
+
+
+
+
 
     <script>
         //get container size and calculate the amount of tiles it needs to create

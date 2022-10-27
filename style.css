@@ -1,4 +1,12 @@
+/* Import Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --background: #ffffff;
+    --base: #f5f5f5;
+    --light: #f9cbb4;
+    --accent: #ea5d19;
+}
 
 body {
     height: 100%;
@@ -23,6 +31,7 @@ input {
     cursor: pointer;
 }
 
+/* Main Duo Page Style */
 main {
     display: flex;
     align-items: center;
@@ -38,6 +47,7 @@ main {
     width: 70vw;
 }
 
+/* Page Label Style */
 .content-container-label {
     font-size: 12px;
     position: absolute;
@@ -57,6 +67,7 @@ main {
     margin: 0;
 }
 
+/* Content Style */
 .first-content {
     justify-content: center !important;
 }
@@ -106,7 +117,7 @@ main {
 .content-article {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     gap: 10px;
     width: 60%;
@@ -117,19 +128,16 @@ main {
     margin: 0;
 }
 
+.survey-info {
+    max-width: 60%;
+}
+
+/* Button Styles */
 .content-btns {
     position: absolute;
     bottom: 18vh;
     width: 35vw;
     text-align: center;
-}
-
-.ibl_logo {
-    max-width: 200px;
-}
-
-.survey-info {
-    max-width: 60%;
 }
 
 .btn {
@@ -168,6 +176,7 @@ main {
     width: 80px;
 }
 
+/* Input Field Style */
 .input-fld {
     background: unset;
     border: unset;
@@ -229,111 +238,181 @@ main {
     margin-bottom: 5px;
 }
 
-
-
-
-
-
-
-
-
-
-
-.avatar-container {
+/* Identity Card Style */
+.space {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    width: 100%;
-    height: 100%;
-}
-
-.avatar-container-left {
-    display: flex;
-    /* flex-wrap: wrap; */
-    justify-content: flex-start;
+    grid-template-rows: auto auto;
     align-items: center;
-    padding: 20px;
+    justify-content: center;
 }
 
-.avatar-container-right {
-    padding: 20px;
-}
-
-.avatar-tile {
-    height: 180px;
-    width: 180px;
-    border-radius: 50%;
-    margin: 8px;
+.id-card {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(10px, 1fr));
+    grid-template-rows: 40px auto;
 
     background-color: white;
-    background-repeat: no-repeat;
+    width: 360px;
+    height: 220px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 12px;
+}
+
+.id-card-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--accent);
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    border-radius: 12px 12px 0 0;
+    grid-column: 1/9;
+    grid-row: 1/1;
+}
+
+.id-card-title h1 {
+    margin: 5px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.id-photo {
+    background: lightgray;
+    margin: 10px;
+    height: 140px;
+    width: 110px;
+    border-radius: 7px;
+    grid-row: 2/2;
+    grid-column: 1/4;
+
     background-size: cover;
+    background-position-x: center;
+    background-position-y: 10px;
+    background-repeat: no-repeat;
 }
 
-.avatar-tile:hover {
-    cursor: pointer;
-    filter: brightness(0.85);
+.id-info {
+    grid-row: 2/2;
+    grid-column: 4/8;
 }
 
-.avatar-tile:checked {
-    filter: brightness(0.85);
-    border: solid 4px #25d366;
+.id-info p {
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
-#avatar-1 {
-    background-image: url(./images/avatars/Asset\ 1@4x.png);
+#id-info-name {
+    margin-top: 10px;
+    margin-bottom: 8px;
 }
 
-#avatar-2 {
-    background-image: url(./images/avatars/Asset\ 2@4x.png);
-}
-
-#avatar-3 {
-    background-image: url(./images/avatars/Asset\ 3@4x.png);
-}
-
-#avatar-4 {
-    background-image: url(./images/avatars/Asset\ 4@4x.png);
-}
-
-#avatar-5 {
+/* Avatar Selection */
+/* MALE */
+#Bs-male {
     background-image: url(./images/avatars/Asset\ 5@4x.png);
 }
 
-#avatar-6 {
-    background-image: url(./images/avatars/Asset\ 6@4x.png);
-}
-
-#avatar-7 {
-    background-image: url(./images/avatars/Asset\ 7@4x.png);
-}
-
-#avatar-8 {
-    background-image: url(./images/avatars/Asset\ 8@4x.png);
-}
-
-#avatar-9 {
+#Ms-male {
     background-image: url(./images/avatars/Asset\ 9@4x.png);
 }
 
-#avatar-10 {
-    background-image: url(./images/avatars/Asset\ 10@4x.png);
+#St-male {
+    background-image: url(./images/avatars/Asset\ 7@4x.png);
 }
 
-#avatar-11 {
-    background-image: url(./images/avatars/Asset\ 11@4x.png);
+#Ft-male {
+    background-image: url(./images/avatars/Asset\ 2@4x.png);
 }
 
-#avatar-12 {
+#Pt-male {
     background-image: url(./images/avatars/Asset\ 12@4x.png);
 }
 
-#avatar-13 {
+#Ps-male {
+    background-image: url(./images/avatars/Asset\ 2@4x.png);
+}
+
+/* FEMALE */
+#Bs-female {
+    background-image: url(./images/avatars/Asset\ 3@4x.png);
+}
+
+#Ms-female {
+    background-image: url(./images/avatars/Asset\ 4@4x.png);
+}
+
+#St-female {
     background-image: url(./images/avatars/Asset\ 13@4x.png);
 }
 
-#avatar-14 {
-    background-image: url(./images/avatars/Asset\ 14@4x.png);
+#Ft-female {
+    background-image: url(./images/avatars/Asset\ 6@4x.png);
 }
+
+#Pt-female {
+    background-image: url(./images/avatars/Asset\ 11@4x.png);
+}
+
+#Zv-female {
+    background-image: url(./images/avatars/Asset\ 4@4x.png);
+}
+
+#Ps-female {
+    background-image: url(./images/avatars/Asset\ 11@4x.png);
+}
+
+
+
+
+
+
+
+.avatar-selection {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.avatar-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+}
+
+.avatar:checked {
+    border: solid 10px green
+}
+
+.avatar {
+    height: 120px;
+    width: 120px;
+    background-color: white;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: bottom;
+    border-radius: 100px;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -430,6 +509,8 @@ main {
 #item7 {
     background-image: url(./images/items/swimming.png);
 }
+
+
 
 
 
