@@ -7,6 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <title>WBK - Home</title>
+
+    <!-- LeafletJS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+        integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
+    <!-- LefletJS JS -->
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+        integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+
 </head>
 
 <body>
@@ -15,7 +23,7 @@
         <form x-on:keydown.prevent.enter="" id="BeweegOnderzoek">
 
             <!-- Information Tab -->
-            <section id="info-tab" class="content-container-page">
+            <section id="info-tab" class="content-container-page" style="display:grid;">
 
                 <label class="content-container-label">
                     <h1>Informatie</h1>
@@ -283,7 +291,7 @@
                             <h1>4.2 Welke persona spreekt het meest tot jouw?</h1>
                             <p>Het onderzoek richt zich op verschillende doelgroepen in de wijk Stratum. Graag komen we
                                 erachter welke doelgroep het meest tot jou aanspreekt. Kies een persona door rechts op
-                                de karaters te klikken en de tekst in de identiteitskaart te lezen.</p> <br>
+                                een van de karakters te klikken en de tekst in de identiteitskaart te lezen.</p> <br>
                             <h1>→</h1>
                         </div>
 
@@ -353,20 +361,17 @@
                 </div>
             </section>
 
-
-
-
-
-
-
-
             <!-- WijkBeweegKaart -->
             <section id="wbk-tab" class="content-container-page" style="display:none;">
+                <label class="content-container-label">
+                    <h1>5. WijkBeweegKaart</h1>
+                </label>
                 <div class="content-container-left">
                     <article class="content-article">
                         <div>
-                            <h1>WijkBeweegkaart</h1>
-                            <p>Sleep de sport- en speel-elementen die u wenst op de kaart en laat uw behoefte zien</p>
+                            <h1>5.1 Wat zijn uw sport- en speelwensen en behoeften?</h1>
+                            <p>Wij komen graag uw sport- en beweegwensen en behoeften te weten! Dit kunt u aangeven door
+                                de gewenste sport- en speel-elementen op de kaart te slepen.</p>
                             <br>
                             <nav class="item-elements" ondrop="drop(event)" ondragover="allowDrop(event)">
                                 <div id="item0" class="tile item" draggable="true" ondragstart="drag(event)"></div>
@@ -387,16 +392,13 @@
 
                 </div>
                 <div class="content-container-right">
-                    <div class="map">
-                        <section class="wrapper"></section>
-                    </div>
+                    <section class="map-container" id="mpcr"></section>
                 </div>
             </section>
 
-
             <!-- Thanks Screen -->
             <section id="thnx-tab" class="content-container-page" style="display:none;">
-                <div class="content-container-left">
+                <div class="content-container-left first-content">
                     <div class="survey-info">
                         <h1>Bedankt voor uw bijdragen!</h1>
                         <p>InnoBeweegLab en de Gemeente Eindhoven bedanken u voor uw bijdragen aan het beweegonderzoek.
@@ -418,7 +420,6 @@
                 </div>
             </section>
 
-
         </form>
     </main>
 
@@ -427,7 +428,7 @@
         //put all container pages in an array
         const formPages = document.getElementsByClassName('content-container-page')
         const buttonArray = document.getElementsByClassName('btn');
-        var currentPage = 0
+        var currentPage = 0, currentView = 0
 
         //for each button press, action
         for (let btn of buttonArray) {
@@ -606,16 +607,13 @@
                                 if (child.selected == true) isAvatarSelecter = true;
                             }
                             if (isAvatarSelecter == false) return alert("U heeft nog geen character geselecteerd.")
-
-
-
                         }
 
                         //if wijkbeweegkaart tab, kijk of de kaart is gevuld en bewaar de 
                         if (formPages[currentPage].id == "wbk-tab") {
+                            console.log(dropItemLocations)
                             if (dropItemLocations.size < 2) return alert("U heeft nog geen sport- en beweegbehoeften aangegeven!")
                         }
-
 
 
                         //disable current page
@@ -624,6 +622,13 @@
                         currentPage++
                         //show new page
                         formPages[currentPage].style.display = "grid";
+
+                        //create grid boxes on wijkbeweegkaart tab
+                        if (formPages[currentPage].id == "wbk-tab") {
+                            if (currentView == 0) createGridBoxes();
+                            currentView++
+                        }
+
                     }
                 }
                 //go to previous page
@@ -693,28 +698,41 @@
 
     </script>
 
-
-
-
-
     <script>
-        //get container size and calculate the amount of tiles it needs to create
-        const container = document.getElementsByClassName("content-container-right")[0];
-        let width = container.offsetWidth;
-        let height = container.offsetHeight;
-        const x = Math.round(width / 20) * 20;
-        const y = Math.round(height / 20) * 20;
-        const boxSize = 50 * 50;
-        const boxNumber = 2 * Math.round((x * y / boxSize) / 2)
-        const wrapper = document.getElementsByClassName("wrapper")[0];
-        for (let box = 0; box < boxNumber; box++) {
-            const tile = document.createElement("div");
-            tile.classList.add("tile");
-            tile.id = `tileId_${box}`
-            tile.setAttribute('ondrop', "drop(event)")
-            tile.setAttribute('ondragover', "allowDrop(event)")
-            wrapper.appendChild(tile);
+        //gridboxing function
+        function createGridBoxes() {
+            //get map container and set grid template
+            const mapContainer = document.getElementById('mpcr')
+
+            //calcualte width and height sizes
+            const x_count = Math.round(mapContainer.offsetWidth / 50)
+            const y_count = Math.round(mapContainer.offsetHeight / 50)
+            //add grid template
+            mapContainer.style.gridTemplateRows = `repeat(${y_count}, 1fr)`;
+            mapContainer.style.gridTemplateColumns = `repeat(${x_count}, 1fr)`;
+
+            //remove childs before re-arranging tiles
+            while (mapContainer.firstChild) {
+                mapContainer.removeChild(mapContainer.firstChild);
+            }
+
+            //create tiles, add styling and drag functionality
+            const tileCount = x_count * y_count;
+            for (let tile_ = 0; tile_ < tileCount; tile_++) {
+                const tile = document.createElement('div');
+                tile.classList.add('tile');
+                tile.id = `tileId_${tile_}`
+                tile.setAttribute('ondrop', "drop(event)")
+                tile.setAttribute('ondragover', "allowDrop(event)")
+                mapContainer.appendChild(tile);
+            }
         }
+
+        //recreate all grid boxes on window resize
+        window.addEventListener('resize', (event) => {
+            createGridBoxes();
+        });
+
     </script>
 
     <script>
